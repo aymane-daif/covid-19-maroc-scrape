@@ -15,4 +15,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.stats {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 20vh;
+}
+@media (max-width: 687px) {
+  .stats {
+    margin-top: 10vh;
+    grid-template-columns: auto;
+  }
+}
+</style>

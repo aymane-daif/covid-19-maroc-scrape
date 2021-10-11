@@ -3,6 +3,7 @@ const cheerio = require('cheerio');
 
 const URL = 'https://www.worldometers.info/coronavirus/country/morocco/';
 
+let cashedData = null;
 let stats = {
   countryName: '',
   cases: [],
@@ -10,6 +11,9 @@ let stats = {
   recovers: [],
 };
 const scrapeData = async () => {
+  if (cashedData) {
+    return Promise.resolve(cashedData);
+  }
   try {
     const { data } = await axios.get(URL);
 
@@ -36,6 +40,7 @@ const scrapeData = async () => {
     stats.deaths = [deathsTitle, deathsValue];
     stats.recovers = [recoversTitle, recoversValue];
 
+    cashedData = stats;
     return stats;
   } catch (err) {
     console.log(err.message);

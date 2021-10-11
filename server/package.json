@@ -1,0 +1,21 @@
+{
+  "name": "covid-19-stats-morocco",
+  "version": "1.0.0",
+  "description": "Covid 19 Stats in Morocco",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "aymane@daif",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.4",
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}

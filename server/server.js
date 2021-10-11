@@ -1,8 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 
 const { scrapeData } = require('./scrape');
 
-const app = express(express.json());
+const app = express();
+
+app.use(express.json());
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.json({
@@ -10,8 +14,9 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/api/covid/results', (req, res) => {
-  scrapeData().then((scrapedData) => res.json(scrapedData));
+app.get('/api/covid/results', async (req, res) => {
+  let scrapedData = await scrapeData();
+  res.json(scrapedData);
 });
 
 const PORT = process.env.PORT || 1947;

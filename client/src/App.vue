@@ -1,12 +1,23 @@
 <template>
-  <main v-if="!loading">
-    <h1>Statistics of Coronavirus in {{ data.countryName }}</h1>
-    <ListStats :stats="data" />
+  <main>
+    <section v-if="!loading">
+      <div v-if="error" class="error">
+        {{ error }}
+      </div>
+      <div v-else>
+        <h1>Statistics of Coronavirus in {{ data.countryName }}</h1>
+        <ListStats :stats="data" />
+      </div>
+    </section>
+    <section v-else>
+      <Loader />
+    </section>
   </main>
 </template>
 
 <script>
 import ListStats from './components/ListStats.vue';
+import Loader from './components/Loader.vue';
 
 export default {
   name: 'App',
@@ -17,6 +28,7 @@ export default {
   }),
   components: {
     ListStats,
+    Loader,
   },
   async created() {
     try {
@@ -26,7 +38,8 @@ export default {
       this.loading = false;
     } catch (error) {
       console.log(error.message);
-      his.loading = false;
+      this.error = 'Something went wrong...';
+      this.loading = false;
     }
   },
 };
@@ -43,5 +56,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.error {
+  color: #a7526e;
+  font-size: 2rem;
 }
 </style>

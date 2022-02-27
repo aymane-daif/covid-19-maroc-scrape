@@ -9,11 +9,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.json({
-    message: '😷💊💉',
-  });
-});
+// app.get('/', (req, res) => {
+//   res.json({
+//     message: '😷💊💉',
+//   });
+// });
 
 app.get('/api/covid/results', async (req, res) => {
   let scrapedData = await scrapeData();

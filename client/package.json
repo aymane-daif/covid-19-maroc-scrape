@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "covid-19-stats-morocco": "file:../server",
     "vue": "^3.0.0"
   },
   "devDependencies": {

@@ -32,7 +32,9 @@ export default {
   },
   async created() {
     try {
-      const data = await fetch('http://localhost:1947/api/covid/results');
+      const data = await fetch(
+        'https://covid19scrapemaroc.herokuapp.com/api/covid/results'
+      );
       const results = await data.json();
       this.data = results;
       this.loading = false;
